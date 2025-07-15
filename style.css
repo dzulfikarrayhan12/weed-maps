@@ -4,9 +4,13 @@
     background: #fff;
   }
 
+    .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+
 nav {
   background-color: rgba(0, 0, 0, 0.25); /* hitam semi transparan */
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(80px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25); /* garis putih kaca tipis */
   position: sticky;
@@ -20,6 +24,58 @@ nav {
   color: white; /* teks dan ikon putih supaya kontras */
 }
 
+/* Transaksi */
+.transaksi {
+  
+  background: #111;
+}
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 40px 0;
+  white-space: nowrap;
+}
+
+.tag-list img {
+  height: 90px;  /* ubah sesuai keinginan: 30px, 60px, dll */
+  width: auto;   /* biarkan proporsional */
+}
+.tag-list li {
+  flex-shrink: 0;        /* mencegah menyusut saat overflow */
+  width: 80px;           /* atur lebar tetap */
+  height: 60px;          /* atur tinggi tetap */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* Pastikan elemen yang di-scroll adalah container, bukan listnya langsung */
+.scroll-container { /* Anda perlu menambahkan div ini di HTML Anda */
+    overflow-x: visible; /* Sembunyikan scrollbar */
+    width: 100%;
+}
+
+.tag-list.scroll-right {
+  animation: scroll-right 15s linear infinite;
+}
+
+.tag-list.scroll-left {
+  animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-100%); } /* Mulai dari posisi normal */
+  100% { transform: translateX(100%); } /* Geser ke kiri sampai akhir list */
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
 
   .header {
   position: relative;
@@ -27,7 +83,7 @@ nav {
   align-items: center;
   justify-content: flex-start; /* agar checkout di kiri */
   padding: 0.5rem 1rem;
-  background-color: #000; /* sesuaikan dengan tema */
+  background-color: #fff; /* sesuaikan dengan tema */
   height: 50px;
   box-sizing: border-box;
 }
@@ -36,12 +92,13 @@ nav {
 .checkout-glow-white-to-yellow {
   font-weight: bold;
   font-size: 35px;
-  color: #ffffff;
+  color: #000;
   padding: 0.5rem 1rem;
   border-radius: 8px;
    font-family: "Creepster", system-ui;
   display: inline-block;
   white-space: nowrap;
+   flex: 1; /* agar "CHECKOUT" menempel kiri */
 
 }
 
@@ -54,7 +111,7 @@ nav {
   border-radius: 1px;
   font-family: "Cinzel", serif;
   position: absolute;
-  left: 76%;
+  left: 67%;
   transform: translateX(-50%);
   white-space: nowrap;
 
@@ -67,7 +124,7 @@ nav {
 /* Styling judul */
 
 #pay-btn {
-  background-color: #000; /* Tailwind bg-green-500 */
+  background-color: #22c55e; /* Tailwind bg-green-500 */
   color: white;
   font-weight: 600;
   padding: 0.5rem 1.5rem;     /* Tailwind py-2 px-6 */
@@ -84,35 +141,29 @@ nav {
 }
 
 
-
 .ray-text, .han-text {
   font-family: "Cinzel", serif;
-  font-size: 26px;
+  font-size: 24px; /* Lebih besar agar lebih jelas */
 
-  /* Gradient hijau muda ke hijau tua */
   background: linear-gradient(
     90deg,
-    #a8e6a3,  /* hijau muda terang ganja */
-    #66bb6a,  /* hijau muda segar */
-    #2e7d32   /* hijau tua */
+    #160,   /* kuning keemasan */
+    #60a5fa,   /* hijau mint segar */
+    #60a5fa    /* hijau gelap kontras */
   );
-
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 
-  /* Garis tepi putih di teks */
-  -webkit-text-stroke: 0.8px white;
+  -webkit-text-stroke: 0.7px #1f2937; /* stroke gelap, bukan putih */
 
-  /* Glow efek dari 3 warna hijau */
   text-shadow:
-    0 0 5px #a8e6a3,   /* glow hijau muda terang */
-    0 0 10px #66bb6a,  /* glow hijau muda */
-    0 0 15px #2e7d32;  /* glow hijau tua */
-filter: drop-shadow(0 0 2px #a8e6a3) drop-shadow(0 0 4px #66bb6a) drop-shadow(0 0 6px #2e7d32);
+    1px 1px 2px rgba(0,0,0,0.3),
+    0 0 5px rgba(255,255,255,0.2);
 
-
+  filter: none; /* drop-shadow dihapus untuk kejernihan */
 }
 
+ 
 #han-part {
   transition: opacity 0.4s ease;
 }
@@ -125,14 +176,17 @@ filter: drop-shadow(0 0 2px #a8e6a3) drop-shadow(0 0 4px #66bb6a) drop-shadow(0 
 
  
 #userBtn i {
-  color: black;
+  color: #fff;
   transition: color 0.3s ease;
 }
 
 .ri-shopping-cart-line {
-  color: black;
+  color: #000;
 }
 
+.ri-menu-line{
+  color: #000;
+}
 
 
 @keyframes neon-flicker {
@@ -218,8 +272,8 @@ filter: drop-shadow(0 0 2px #a8e6a3) drop-shadow(0 0 4px #66bb6a) drop-shadow(0 
   }
 
   #loginModal {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
 
   input::placeholder {
@@ -267,6 +321,7 @@ filter: drop-shadow(0 0 2px #a8e6a3) drop-shadow(0 0 4px #66bb6a) drop-shadow(0 
   gap: 29px;
   margin-top: 15px;
 }
+
 
 /* Warna default untuk semua link sosial media */
 .social-icons a {
